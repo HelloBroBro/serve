@@ -381,11 +381,18 @@
               
   <section id="torchserve-token-authorization-api">
 <h1>TorchServe token authorization API<a class="headerlink" href="#torchserve-token-authorization-api" title="Permalink to this heading">¶</a></h1>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h2>
+<ol class="simple">
+<li><p>Download the jar files from <a class="reference external" href="https://mvnrepository.com/artifact/org.pytorch/torchserve-endpoint-plugin">Maven</a></p></li>
+<li><p>Enable token authorization by adding the <code class="docutils literal notranslate"><span class="pre">--plugins-path</span> <span class="pre">/path/to/the/jar/files</span></code> flag at start up with the path leading to the downloaded jar files.</p></li>
+</ol>
+</section>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
 <ol class="simple">
-<li><p>Enable token authorization by adding the provided plugin at start using the <code class="docutils literal notranslate"><span class="pre">--plugins-path</span></code> command.</p></li>
-<li><p>Torchserve will enable token authorization if the plugin is provided. In the current working directory a file <code class="docutils literal notranslate"><span class="pre">key_file.json</span></code> will be generated.</p>
+<li><p>Torchserve will enable token authorization if the plugin is provided. Expected log statement <code class="docutils literal notranslate"><span class="pre">[INFO</span> <span class="pre">]</span> <span class="pre">main</span> <span class="pre">org.pytorch.serve.servingsdk.impl.PluginsManager</span> <span class="pre">-</span> <span class="pre">Loading</span> <span class="pre">plugin</span> <span class="pre">for</span> <span class="pre">endpoint</span> <span class="pre">token</span></code></p></li>
+<li><p>In the current working directory a file <code class="docutils literal notranslate"><span class="pre">key_file.json</span></code> will be generated.</p>
 <ol class="simple">
 <li><p>Example key file:</p></li>
 </ol>
@@ -485,6 +492,7 @@
             <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
               <ul>
 <li><a class="reference internal" href="#">TorchServe token authorization API</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
 <li><a class="reference internal" href="#customization">Customization</a></li>
 <li><a class="reference internal" href="#notes">Notes</a></li>
