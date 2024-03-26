@@ -439,6 +439,20 @@ TorchServe does not prevent users from configuring the address to be <code class
 </ol>
 <p>You can find more details in the <a class="reference external" href="https://pytorch.org/serve/configuration.html#enable-ssl">configuration guide</a></p>
 </li>
+<li><p>Prepare your model against bad inputs and prompt injections. Some recommendations:</p>
+<ol class="simple">
+<li><p>Pre-analysis: check how the model performs by default when exposed to prompt injection (e.g. using <a class="reference external" href="https://github.com/FonduAI/awesome-prompt-injection?tab=readme-ov-file#tools">fuzzing for prompt injection</a>).</p></li>
+<li><p>Input Sanitation: Before feeding data to the model, sanitize inputs rigorously. This involves techniques such as:</p>
+<ul class="simple">
+<li><p>Validation: Enforce strict rules on allowed characters and data types.</p></li>
+<li><p>Filtering: Remove potentially malicious scripts or code fragments.</p></li>
+<li><p>Encoding: Convert special characters into safe representations.</p></li>
+<li><p>Verification: Run tooling that identifies potential script injections (e.g. <a class="reference external" href="https://python.langchain.com/docs/guides/safety/hugging_face_prompt_injection">models that detect prompt injection attempts</a>).</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>If you intend to run multiple models in parallel with shared memory, it is your responsibility to ensure the models do not interact or access each other’s data. The primary areas of concern are tenant isolation, resource allocation, model sharing and hardware attacks.</p></li>
 </ol>
 </section>
 <section id="reporting-a-vulnerability">
